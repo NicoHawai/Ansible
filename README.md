@@ -1,15 +1,44 @@
+# Config Management tools
+
+## Challenges and solutions
+
+- Configuration drift
+- Centralized Configuration & Version Control
+- Configuration Monitoring & Enforcement
+- Configuration Provisionning
+    - Configuration Templates and Variables
+    - Control Configuration Automation
+- Ansible
+    - Playbooks
+    - Inventory
+    - Templates
+    - Variables
+ - Puppet
+    - Manifest
+    - Resource, Class, Module
+    - Templates
+ - Chef
+    - Resource
+    - Recipe
+    - Cookbooks
+    - Runlist
+
+## Pros & Cons    
+
+![](https://www.veritis.com/wp-content/uploads/2020/03/infographic-chef-vs-puppet-vs-ansible-what-are-the-differences.png)
+
 # Ansible
 
 ## Intro
 
-orchestrateur polyvalant
-ecrit en python
-push / ssh / pas d'agent
-tache complexe ou ponctuel
-racheter par redhat en 2015
-facilité d'utilisation > yaml > indentation
-des milliers de modules 
-idempotent
+- Orchestrateur polyvalant 
+- Ecrit en python
+- Push / ssh / pas d'agent
+- Tâches complexes ou ponctuelles
+- Racheter par redhat en 2015
+- Facilité d'utilisation > yaml > indentation
+- Des milliers de modules 
+- Idempotent
 
 ## Définitions
 
@@ -29,18 +58,19 @@ idempotent
 
 **Playbooks** : un fichier, son role est centré entre l'inventaire et les roles. Va faire jouer des roles sur un inventaire specifique  
 
-<u>2 executables</u> :  
+*2 executables* :  
+
 ansible (tests, tâches sommaires) & ansible-playbook (joue un playbook)  
 
 ---
 
 ## Mise en place des VMs
 
-Create a debian machine / **bridge mode**  
-5x clones / **new mac address**  
-hostname srv1/2/3/4/5  
-master > ssh
-master > install ansible  
+- Create a debian machine / **bridge mode**  
+- 5x clones / **new mac address**  
+- hostname srv1/2/3/4/5  
+- master > ssh config
+- master > install ansible  
 
 --------------
 

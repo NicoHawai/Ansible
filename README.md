@@ -76,6 +76,13 @@ ansible (tests, tâches sommaires) & ansible-playbook (joue un playbook)
 
 ## Configuration de Ansible
 
+> nano /etc/ansible/ansible.cfg  
+
+
+> nano /etc/ansible/hosts  
+
+
+
 ### ansible (le binaire) :
 
 -u = user  

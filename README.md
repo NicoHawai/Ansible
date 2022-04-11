@@ -82,41 +82,52 @@ ansible (tests, tâches sommaires) & ansible-playbook (joue un playbook)
 > nano /etc/ansible/hosts  
 
 
-
+--------------
 ### ansible (le binaire) :
+--------------
 
--u = user  
--b = become sudo  
--k = ask password  
--vvv verbose  
--K ask sudo password  
---ask-vault-pass = déchiffrer un password  
---vault-password-file = stock password de vault dans un file  
--f = forks (5 by default)  
---one-line  
--e = extra varibale  
+**-u**             = user  
+**-b**             = become sudo  
+**-k** = ask password  
+**-vvv** verbose  
+**-K** ask sudo password  
+**--ask-vault-pass** = déchiffrer un password  
+**--vault-password-file** = stock password de vault dans un file  
+**-f** = forks (5 by default)  
+**--one-line**  
+**-e** = extra varibale  
 *gather facts*  
--m setup -a "filter="  
+**-m setup -a "filter="**  
 
+--------------
 ### ansible-playbook (le binaire) :
+--------------
 
-Fichier qui va déclencher des actions
+*Fichier qui va déclencher des actions*
 
--i = inventory  
--l = limit > spécifier un serveur, ou un groupe de serveurs  
--t = tags  
---step = étape par étape, demande confirmation  
--u  
--b  
--k  
--K  
--e  
--f  
---ask-vault  
---vault-password-file  
+**-i** = inventory  
+**-l** = limit > spécifier un serveur, ou un groupe de serveurs  
+**-t** = tags  
+**--step** = étape par étape, demande confirmation  
+**-u**  
+**-b**  
+**-k**  
+**-K**  
+**-e**  
+**-f**  
+**--ask-vault**  
+**--vault-password-file**  
+
+--------------
 
 ### Module user
 
+--------------
+
 ### Module apt
 
+--------------
+
 ### Installation server Apache
+
+--------------

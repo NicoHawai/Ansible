@@ -131,3 +131,34 @@ ansible (tests, tâches sommaires) & ansible-playbook (joue un playbook)
 ### Installation server Apache
 
 --------------
+# CISCO
+
+## Enable SSH
+```
+alpha#conf t
+alpha(conf)#ip domain-name nunux.lan
+alpha(conf)#crypto key generate rsa modulus 1024
+alpha(conf)#ip ssh logging events
+alpha(conf)#ip ssh version 2
+alpha(conf)#end
+alpha#wr mem
+alpha#show ip ssh
+```
+
+## Create user
+```
+alpha#conf t
+alpha(config)#username hello secret hello
+alpha(config)#line vty 0 15
+alpha(config-line)#transport input ssh
+alpha(config-line)#login local
+alpha(config-line)#end
+alpha#wr mem
+```
+# .ssh/config (backward compatible with old key exchange)
+
+```
+KexAlgorithms diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
+Ciphers aes256-ctr,aes128-ctr,aes256-cbc,aes128-cbc,3des-cbc
+```
+

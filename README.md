@@ -134,12 +134,13 @@ forks       = 1
 ---
 - name: Mon Premier PlayBook
   hosts: all
-  #remote_user: hawai
   gather_facts: no
   tasks:
   - name: check connection
     ping:
 ```
+Launch *playbook-ansible myplaybook.yml*  
+
 Try to change forks in the ansible.cfg to see the difference (forks=5 for instance) and replay the ping playbook  
 Now edit:  
 > sudo nano /etc/ansible/hosts  
@@ -153,6 +154,7 @@ Now edit:
 192.168.1.a
 192.168.1.b
 ```
+Launch *playbook-ansible web myplaybook.yml*
 
 Add :
 
@@ -167,7 +169,7 @@ Add :
 ```
 If you want to set/change the owner/group  
 1) Make sure the user exists
-2) Launch playbook-ansible -b -K myplaybook.yml  
+2) Launch *playbook-ansible -b -K myplaybook.yml  *
 
 Add :
 ```
@@ -270,8 +272,8 @@ alpha(config-line)#login local
 alpha(config-line)#end
 alpha#wr mem
 ```
-# .ssh/config (backward compatible with old key exchange)
-
+## .ssh/config (backward compatible with old key exchange)  
+On linux, add this file with this content:
 ```
 KexAlgorithms diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
 Ciphers aes256-ctr,aes128-ctr,aes256-cbc,aes128-cbc,3des-cbc

@@ -348,40 +348,22 @@ puis Enter
 
 ```
 
-## backup running
+## Configure clock
 
+**check clock :** ansible all -m cli_command -a "commands='show clock'"  
+
+**set clock:**
 ```
 ---
 - name: playbook for cisco ios
   hosts: all
   gather_facts: no
+  
   tasks:
-    - name: backup
-      ios_command:
+    - name: clock set
+      ios_config:
         commands:
-          - show run
-      register: shrun
-    - name: save running var
-      copy:
-        content: "{{ shrun.stdout[0] | replace ('\\n','\n') }}"
-        dest: "my_config_{{ inventory_hostname }}.txt"
+          - clock timezone CET +1
+          - clock summer-time CEST recurring
 ```
-## save ios_facts
-
-```
----
-- name: playbook for cisco ios
-  hosts: all
-  gather_facts: no
-  tasks:
-    - name: backup
-      ios_facts:
-        gather_subset: all
-      register: shfacts
-    - name: save var
-      copy:
-        content: "{{ shfacts | replace (',','\n') }}"
-        dest: "facts_{{ inventory_hostname }}.txt"
-```
-
 

@@ -301,6 +301,23 @@ ansible_become_password: password
 
 puis Enter
 
+### First ios playbook
+```
+---
+- name: playbook for cisco ios
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: show version
+      ios_command:
+        commands: show version
+      register: my_result
+    - name: display result
+      debug:
+        var: my_result
+```
+
+
 ### Register result in a file
 ```
 ---
@@ -331,5 +348,40 @@ puis Enter
 
 ```
 
+## backup running
+
+```
+---
+- name: playbook for cisco ios
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: backup
+      ios_command:
+        commands:
+          - show run
+      register: shrun
+    - name: save running var
+      copy:
+        content: "{{ shrun.stdout[0] | replace ('\\n','\n') }}"
+        dest: "my_config_{{ inventory_hostname }}.txt"
+```
+## save ios_facts
+
+```
+---
+- name: playbook for cisco ios
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: backup
+      ios_facts:
+        gather_subset: all
+      register: shfacts
+    - name: save var
+      copy:
+        content: "{{ shfacts | replace (',','\n') }}"
+        dest: "facts_{{ inventory_hostname }}.txt"
+```
 
 

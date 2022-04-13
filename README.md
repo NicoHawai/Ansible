@@ -284,7 +284,7 @@ Ciphers aes256-ctr,aes128-ctr,aes256-cbc,aes128-cbc,3des-cbc
 
 ```
 ---
-ansible_connection= network_cli
+ansible_connection: network_cli
 ansible_network_os: ios
 ansible_user: hello
 ansible_password: hello

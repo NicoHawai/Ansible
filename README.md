@@ -307,10 +307,10 @@ puis Enter
   hosts: all
   gather_facts: no
   
-    tasks:
-      - name: show version
-        ios_command:
-          commands: show version
+  tasks:
+    - name: show version
+      ios_command:
+        commands: show version
 ```
 
 ```

@@ -161,4 +161,18 @@ alpha#wr mem
 KexAlgorithms diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
 Ciphers aes256-ctr,aes128-ctr,aes256-cbc,aes128-cbc,3des-cbc
 ```
+### group_vars
 
+> group_vars > all.yml  
+
+```
+---
+ansible_connection= network_cli
+ansible_network_os: ios
+ansible_user: hello
+ansible_password: hello
+ansible_become: yes
+ansible_method: enable
+ansible_become_password: password
+
+```

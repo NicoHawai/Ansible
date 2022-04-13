@@ -300,3 +300,19 @@ ansible_become_password: password
 > sudo netplan try
 
 puis Enter
+
+```
+---
+- name: playbook cisco
+  hosts: all
+  gather_facts: no
+  
+    tasks:
+      - name: show version
+        ios_command:
+          commands: show version
+```
+
+```
+
+

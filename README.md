@@ -311,8 +311,24 @@ puis Enter
     - name: show version
       ios_command:
         commands: show version
+      register: variable
+    - name: display result
+      debug: variable.stdout
+        var: variable
+    - name: save result in file
+      copy:
+        content: "{{ variable | replace(',','\n')}}"
+        dest: "show.txt"
 ```
+**--> this (above) will overwrite the file**
+```
+     - name: register result in file
+       lineinfile:
+         create: true
+         dest: "show.txt"
+         line: "{{ variable | replace(',','\n')}} \n ---------------------------------------------- \n"
 
 ```
+
 
 

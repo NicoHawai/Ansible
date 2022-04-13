@@ -76,12 +76,20 @@ ansible (tests, tâches sommaires) & ansible-playbook (joue un playbook)
 
 ## Configuration de Ansible
 
-> nano /etc/ansible/ansible.cfg  
-
-
-> nano /etc/ansible/hosts  
-
-
+> sudo nano /etc/ansible/ansible.cfg  
+```
+[defaults]
+inventory   = /etc/ansible/hosts
+forks       = 1
+```
+> sudo nano /etc/ansible/hosts  
+```
+192.168.1.x
+192.168.1.y
+192.168.1.z
+192.168.1.a
+192.168.1.b
+```
 --------------
 ### ansible (le binaire) :
 --------------
@@ -120,15 +128,122 @@ ansible (tests, tâches sommaires) & ansible-playbook (joue un playbook)
 
 --------------
 
+### My first playbook
+
+```
+---
+- name: Mon Premier PlayBook
+  hosts: all
+  #remote_user: hawai
+  gather_facts: no
+  tasks:
+  - name: check connection
+    ping:
+```
+Try to change forks in the ansible.cfg to see the difference (forks=5 for instance) and replay the ping playbook  
+Now edit:  
+> sudo nano /etc/ansible/hosts  
+```
+[web]
+192.168.1.x
+192.168.1.y
+[db]
+192.168.1.z
+[syslog]
+192.168.1.a
+192.168.1.b
+```
+
+Add :
+
+```
+  - name: add folder /tmp/hawai/...
+    file:
+      path: "/tmp/hawai/1/2/3/4/5"
+      state: directory
+      recurse: yes
+      #owner: hawai
+      #group: hawai
+```
+If you want to set/change the owner/group  
+1) Make sure the user exists
+2) Launch playbook-ansible -b -K myplaybook.yml  
+
+Add :
+```
+  - name: add file
+    file:
+      path: "/tmp/hawai/1/2/3/file.txt"
+      state: touch
+```
+
+
 ### Module user
 
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html  
+
+```
+---
+- name: mon playbook users
+  hosts: all
+  become: yes
+  tasks:
+    - name: ajout de l'utilisateur c3po
+    user:
+      name: c3po
+      state: present
+      password: "{{'12345678' | password_hash('sha512')}}"
+
+```
 --------------
 
-### Module apt
+### APT module
+
+```
+---
+- name: my playbook with APT
+  hosts: web
+  become: yes
+  tasks:
+  - name: update cache & installation htop
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    name: htop
+    state: latest
+```
 
 --------------
-
 ### Installation server Apache
+
+> create a custom index.html
+
+```
+---
+- name: My playbook Apache
+  hosts: web
+  become: yes
+  tasks:
+  - name: update cache & installation htop
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+  - name: install apache2  
+    apt:
+      name: apache2
+      state: latest
+  - name: install php
+    apt:
+      name: php
+      state: latest
+  - name: ajout de notre page index.html
+    copy:
+      src: "index.html"
+      dest: "/var/www/html/index.html"
+      owner: root
+      group: root
+      mode: 0644
+```
 
 --------------
 # CISCO

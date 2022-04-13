@@ -301,6 +301,7 @@ ansible_become_password: password
 
 puis Enter
 
+### Register result in a file
 ```
 ---
 - name: playbook cisco
@@ -320,7 +321,7 @@ puis Enter
         content: "{{ variable | replace(',','\n')}}"
         dest: "show.txt"
 ```
-**--> this (above) will overwrite the file**
+**--> this (above) will overwrite the file** so replace the *copy* module by
 ```
      - name: register result in file
        lineinfile:

@@ -1,5 +1,8 @@
 # Config Management tools
 
+Trainer : Nico  
+Location: IRISIB, for Cisco class  
+
 ## Challenges and solutions
 
 - Configuration drift

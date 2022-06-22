@@ -1,7 +1,9 @@
 # Config Management tools
 
 Trainer : Nico  
-Location: IRISIB, for Cisco class  
+Location: IRISIB, for Cisco class    
+Day 1 : Ansible & Linux devices  
+Day 2 : Ansible & Cisco devices  
 
 ## Challenges and solutions
 

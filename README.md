@@ -293,14 +293,6 @@ ansible_method: enable
 ansible_become_password: password
 
 ```
-### NETPLAN
-
-![](https://vitux.com/wp-content/uploads/2019/05/word-image-265.png?ezimgfmt=ng:webp/ngcb10)
-
-> sudo netplan try
-
-puis Enter
-
 ### First ios playbook
 ```
 ---

@@ -25,7 +25,7 @@
 
 ## Pros & Cons    
 
-![](https://www.veritis.com/wp-content/uploads/2020/03/infographic-chef-vs-puppet-vs-ansible-what-are-the-differences.png)
+![](ansible.png)
 
 # Ansible
 
